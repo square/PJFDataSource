@@ -67,7 +67,7 @@ Implmenting your `loadContent` method correctly is important and not entirely ob
 {    
     [self.loadingCoordinator loadContentWithBlock:^(PJFLoadingState *loadingState) {
         [self.colorsLoader asyncLoadColorsWithSuccess:^(NSArray *colors) {
-            if ([loadingState hasBeenSuperseded]) {
+            if (!loadingState.valid) {
                 return;
             }
             
@@ -76,7 +76,7 @@ Implmenting your `loadContent` method correctly is important and not entirely ob
             [self.loadingCoordinator loadContentDidFinishWithError:nil];
             
         } error:^(NSError *error) {
-            if ([loadingState hasBeenSuperseded]) {
+            if (!loadingState.valid) {
                 return;
             }
             
@@ -86,7 +86,7 @@ Implmenting your `loadContent` method correctly is important and not entirely ob
 }
 ```
 
-The `self.loadingCoordinator` object is provided by the PJFDataSource base class. When you start loading your content, do so via the `loadContentWithBlock:` method. This allows the loading coordinator to know when you start loading and allows it to provide a `PJFLoadingState` object so we can ignore incoming responses from obsolete requests (i.e. supereseded by a more recent request).
+The `self.loadingCoordinator` object is provided by the PJFDataSource base class. When you start loading your content, do so via the `loadContentWithBlock:` method. This allows the loading coordinator to know when you start loading and allows it to provide a `PJFLoadingState` object so we can ignore incoming responses from obsolete requests (i.e. invalidated by a more recent request).
 
 Within the `loadContentWithBlock:` block, you'll kick off your async loading task with callbacks for completion. In this case we're using another object (`self.colorsLoader`) to do the heavy lifting. In our completion blocks, we check the `loadingState` to determine if it is still current. If it isn't, we ignore this response by returning immediately. If it's still current, then we'll update our internal model (e.g. `self.colors = colors;`) and then notify our `loadingCoordinator` of success or failure via `loadContentDidFinishWithError:`.
 

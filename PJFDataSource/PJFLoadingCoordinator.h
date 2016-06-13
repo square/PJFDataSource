@@ -35,9 +35,9 @@ typedef void (^PJFLoadingBlock)(PJFLoadingState *loadingState);
 
 @interface PJFLoadingState : NSObject
 
-@property (atomic, readonly) BOOL hasBeenSuperseded;
+@property (atomic, readonly, getter=isValid) BOOL valid;
 
-- (void)supersede;
+- (void)invalidate;
 
 @end
 
