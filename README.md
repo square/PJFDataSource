@@ -108,4 +108,4 @@ If you'd like to help, see "Contributing" below.
 We’re glad you’re interested in PJFDataSource, and we’d love to see where you take it. Please read our [contributing guidelines](Contributing.md) prior to submitting a Pull Request.
 
 
-![Fry Meme wondering about PJFDataSource's name prefix](https://stash.corp.squareup.com/projects/IOS/repos/pjfdatasource/attachments/85bf6cff6c/upload.png)
+![Fry Meme wondering about PJFDataSource's name prefix](https://cdn.meme.am/instances/500x/68845616.jpg)
