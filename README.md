@@ -1,5 +1,10 @@
 # PJFDataSource
 
+[![CI Status](https://travis-ci.org/square/PJFDataSource.svg?branch=master)](https://travis-ci.org/square/PJFDataSource)
+[![Version](https://img.shields.io/cocoapods/v/PJFDataSource.svg)](http://cocoadocs.org/docsets/PJFDataSource)
+[![License](https://img.shields.io/cocoapods/l/PJFDataSource.svg)](http://cocoadocs.org/docsets/PJFDataSource)
+[![Platform](https://img.shields.io/cocoapods/p/PJFDataSource.svg)](http://cocoadocs.org/docsets/PJFDataSource)
+
 PJFDataSource is a small library that provides a simple, clean architecture for your app to manage its data sources while providing a consistent user interface for common content states (i.e. loading, loaded, empty, and error).
 
 ## Inspiration
