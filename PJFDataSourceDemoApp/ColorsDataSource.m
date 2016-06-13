@@ -59,7 +59,7 @@
     
     [self.loadingCoordinator loadContentWithBlock:^(PJFLoadingState *loadingState) {
         [self.colorsLoader asyncLoadColorsWithSuccess:^(NSArray *colors) {
-            if ([loadingState hasBeenSuperseded]) {
+            if (!loadingState.valid) {
                 return;
             }
             
@@ -68,7 +68,7 @@
             [self.loadingCoordinator loadContentDidFinishWithError:nil];
             
         } error:^(NSError *error) {
-            if ([loadingState hasBeenSuperseded]) {
+            if (!loadingState.valid) {
                 return;
             }
             

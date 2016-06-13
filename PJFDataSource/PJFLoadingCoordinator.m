@@ -20,7 +20,7 @@
 
 @interface PJFLoadingState ()
 
-@property (atomic, readwrite) BOOL hasBeenSuperseded;
+@property (atomic, readwrite) BOOL valid;
 
 @end
 
@@ -45,8 +45,9 @@
 
 - (void)loadContentWithBlock:(PJFLoadingBlock)block;
 {
-    [self.loadingState supersede];
+    [self.loadingState invalidate];
     self.loadingState = [PJFLoadingState new];
+    self.loadingState.valid = YES;
     
     if ([self.dataSource.delegate respondsToSelector:@selector(dataSourceWillBeginLoading:)]) {
         [self.dataSource.delegate dataSourceWillBeginLoading:self.dataSource];
@@ -86,9 +87,9 @@
 
 @implementation PJFLoadingState
 
-- (void)supersede
+- (void)invalidate;
 {
-    self.hasBeenSuperseded = YES;
+    self.valid = NO;
 }
 
 @end
