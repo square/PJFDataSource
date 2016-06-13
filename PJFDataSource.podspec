@@ -1,12 +1,11 @@
 Pod::Spec.new do |s|
   s.name     = 'PJFDataSource'
-  s.version  = '0.0.8'
-  s.license  = { :type => 'Proprietary', :text => "© #{ Date.today.year } Square, Inc." }
-  s.summary  = 'PJFDataSource is a small library to help with UITableView/UICollectionView/etc data source loading.'
-  s.homepage = 'https://stash.corp.squareup.com/projects/IOS/repos/pjfdatasource/browse'
+  s.version  = '1.0.0'
+  s.license  = 'Apache License, Version 2.0'
+  s.summary  = 'A small library that provides a simple, clean architecture for your app to manage its data sources & common content view states.'
+  s.homepage = 'https://github.com/square/PJFDataSource'
   s.authors  = 'Square'
-  s.source   = { :git => 'https://stash.corp.squareup.com/scm/ios/pjfdatasource.git', :tag => "podify/#{ s.version.to_s }" }
+  s.source   = { :git => 'https://github.com/square/PJFDataSource.git', :tag => s.version }
   s.source_files = 'PJFDataSource/*.{h,m}'
-
   s.ios.deployment_target = '8.0'
 end
