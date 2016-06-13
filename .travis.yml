@@ -1,6 +1,6 @@
 language: objective-c
 osx_image: xcode7.3
 script:
-    - xcodebuild -project Valet.xcodeproj -scheme "PJFDataSource" -sdk iphonesimulator -configuration Debug -PBXBuildsContinueAfterErrors=0 ACTIVE_ARCH_ONLY=0 build test
-    - xcodebuild -project Valet.xcodeproj -scheme "PJFDataSource Demo App" -sdk iphonesimulator -configuration Debug -PBXBuildsContinueAfterErrors=0 ACTIVE_ARCH_ONLY=0 build test
+    - xcodebuild -project PJFDataSource.xcodeproj -scheme "PJFDataSource" -sdk iphonesimulator -configuration Debug -PBXBuildsContinueAfterErrors=0 ACTIVE_ARCH_ONLY=0 build
+    - xcodebuild -project PJFDataSource.xcodeproj -scheme "PJFDataSourceDemoApp" -sdk iphonesimulator -configuration Debug -PBXBuildsContinueAfterErrors=0 ACTIVE_ARCH_ONLY=0 build
     - pod lib lint --verbose --fail-fast
