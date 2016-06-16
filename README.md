@@ -11,7 +11,7 @@ PJFDataSource is a small library that provides a simple, clean architecture for 
 
 PJFDataSource was built as a simpler and more focused alternative to Apple's AdvancedCollectionView sample code which was originally introduced in the 2014 WWDC presentation [Advanced User Interfaces with Collection Views](https://developer.apple.com/videos/play/wwdc2014/232/).
 
-We keep the basic patterns that we like, but discard most of the more complex features. For example, PJFDataSource doesn't have any built-in support for "aggregate data sources". Nor does it do any handling of your actual view's content (e.g. configuring and displaying UICollectionViewCells). It doesn't even require you to use a UICollectionView. Your app remains responsible for providing and configuring your user interface's content view, givng you the flexibility to choose a table view, collection view, stack view, etc.
+We keep the basic patterns that we like, but discard most of the more complex features. For example, PJFDataSource doesn't have any built-in support for "aggregate data sources". Nor does it do any handling of your actual view's content (e.g. configuring and displaying UICollectionViewCells). It doesn't even require you to use a UICollectionView. Your app remains responsible for providing and configuring your user interface's content view, giving you the flexibility to choose a table view, collection view, stack view, etc.
 
 ## Installation
 
@@ -60,7 +60,7 @@ You've now got your own `PJFDataSource` subclass instance. You're telling it to 
     
 ### Example `-[PJFDataSource loadContent]`
 
-Implmenting your `loadContent` method correctly is important and not entirely obvious from the API. The key is that the PJFDataSource instance uses its provided `PJFLoadingCoordinator` to actually kick off the load, as well as to notify of success/failure. See this example, taken directly from the demo app:
+Implementing your `loadContent` method correctly is important and not entirely obvious from the API. The key is that the PJFDataSource instance uses its provided `PJFLoadingCoordinator` to actually kick off the load, as well as to notify of success/failure. See this example, taken directly from the demo app:
 
 ```objective-c
 - (void)loadContent;
