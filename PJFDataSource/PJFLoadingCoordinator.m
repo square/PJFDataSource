@@ -45,6 +45,11 @@
 
 - (void)loadContentWithBlock:(PJFLoadingBlock)block;
 {
+    [self loadContentWithBlock:block allowingContentViewToRemain:NO];
+}
+
+- (void)loadContentWithBlock:(PJFLoadingBlock)block allowingContentViewToRemain:(BOOL)allowContentViewToRemain;
+{
     [self.loadingState invalidate];
     self.loadingState = [PJFLoadingState new];
     self.loadingState.valid = YES;
@@ -53,7 +58,11 @@
         [self.dataSource.delegate dataSourceWillBeginLoading:self.dataSource];
     }
     
-    [[self _contentWrapperView] showLoadingPlaceholderView];
+    BOOL showingContentView = [[self _contentWrapperView] isShowingContentView];
+    
+    if (!showingContentView || !allowContentViewToRemain) {
+        [[self _contentWrapperView] showLoadingPlaceholderView];
+    }
     
     if (block) {
         block(self.loadingState);

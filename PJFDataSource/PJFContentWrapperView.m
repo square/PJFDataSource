@@ -71,8 +71,16 @@
         return;
     }
     
+    if ([self.delegate respondsToSelector:@selector(contentWrapperView:willShowLoadingView:)]) {
+        [self.delegate contentWrapperView:self willShowLoadingView:loadingView];
+    }
+    
     [self _showOnlySubview:loadingView animated:YES];
     [loadingView startAnimating];
+    
+    if ([self.delegate respondsToSelector:@selector(contentWrapperView:didShowLoadingView:)]) {
+        [self.delegate contentWrapperView:self didShowLoadingView:loadingView];
+    }
 }
 
 - (void)showNoContentPlaceholderView;

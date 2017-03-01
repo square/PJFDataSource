@@ -28,6 +28,7 @@ typedef void (^PJFLoadingBlock)(PJFLoadingState *loadingState);
 - (instancetype)initWithDataSource:(nullable PJFDataSource *)dataSource NS_DESIGNATED_INITIALIZER;
 
 - (void)loadContentWithBlock:(PJFLoadingBlock)block;
+- (void)loadContentWithBlock:(PJFLoadingBlock)block allowingContentViewToRemain:(BOOL)allowContentViewToRemain;
 - (void)loadContentDidFinishWithError:(nullable NSError *)error;
 
 @end
