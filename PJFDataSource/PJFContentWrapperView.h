@@ -34,10 +34,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol PJFContentWrapperViewDelegate <NSObject>
 @optional
+- (void)contentWrapperView:(PJFContentWrapperView *)wrapperView willShowLoadingView:(UIView *)loadingView;
 - (void)contentWrapperView:(PJFContentWrapperView *)wrapperView willShowNoContentView:(PJFImageTitleMessageView *)placeholderView;
 - (void)contentWrapperView:(PJFContentWrapperView *)wrapperView willShowErrorView:(PJFImageTitleMessageView *)placeholderView withError:(NSError *)error;
 - (void)contentWrapperView:(PJFContentWrapperView *)wrapperView willShowContentView:(UIView *)contentView;
 
+- (void)contentWrapperView:(PJFContentWrapperView *)wrapperView didShowLoadingView:(UIView *)loadingView;
 - (void)contentWrapperView:(PJFContentWrapperView *)wrapperView didShowNoContentView:(PJFImageTitleMessageView *)placeholderView;
 - (void)contentWrapperView:(PJFContentWrapperView *)wrapperView didShowErrorView:(PJFImageTitleMessageView *)placeholderView;
 - (void)contentWrapperView:(PJFContentWrapperView *)wrapperView didShowContentView:(UIView *)contentView;

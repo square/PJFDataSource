@@ -100,7 +100,6 @@ We want to keep PJFDataSource simple, but there are some things we know we'd lik
 
 * Increased customizability of PJFImageTitleMessageView via the `UIAppearance` protocol
 * Customization of the animation (currently a rotation) applied to the PJFLoadingView's loading image 
-* Support for "reloading", where the current content view remains visible while the data source refreshes its content
 
 If you'd like to help, see "Contributing" below.
 
