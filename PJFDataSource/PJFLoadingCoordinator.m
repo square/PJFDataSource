@@ -71,7 +71,9 @@
 
 - (void)loadContentDidFinishWithError:(NSError *)error;
 {
-    [self.dataSource.delegate dataSourceDidFinishLoading:self.dataSource withError:error];
+    if ([self.dataSource.delegate respondsToSelector:@selector(dataSourceDidFinishLoading:withError:)]) {
+        [self.dataSource.delegate dataSourceDidFinishLoading:self.dataSource withError:error];
+    }
 
     if (error) {
         [[self _contentWrapperView] showErrorPlaceholderViewWithError:error];
