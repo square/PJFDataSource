@@ -130,6 +130,9 @@
 
 - (BOOL)_isShowingOnlySubview:(UIView *)subview;
 {
+    if (!subview) {
+        return false;
+    }
     return [self.subviews isEqualToArray:@[subview]];
 }
 
