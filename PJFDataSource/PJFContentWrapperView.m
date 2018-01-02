@@ -41,6 +41,11 @@
 
 #pragma mark - Public Methods
 
+- (BOOL)isShowingLoadingView;
+{
+    return [self _isShowingOnlySubview:self.loadingPlaceholderView];
+}
+
 - (BOOL)isShowingContentView;
 {
     return [self _isShowingOnlySubview:self.contentView];
