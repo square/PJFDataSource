@@ -20,14 +20,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PJFDataSource : NSObject
 
-- (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithDelegate:(id <PJFDataSourceDelegate>)delegate NS_DESIGNATED_INITIALIZER;
+- (instancetype)init;
+- (instancetype)initWithDelegate:(id <PJFDataSourceDelegate>)delegate;
 
 - (void)loadContent;
 
 - (BOOL)hasContent;
 
-@property (nonatomic, readonly, weak, nullable) id <PJFDataSourceDelegate> delegate;
+@property (nonatomic, weak, nullable) id <PJFDataSourceDelegate> delegate;
 @property (nonatomic, readonly) PJFLoadingCoordinator *loadingCoordinator;
 
 @end
