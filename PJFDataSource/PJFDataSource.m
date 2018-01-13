@@ -13,17 +13,25 @@
 
 @implementation PJFDataSource
 
-- (instancetype)init { @throw nil; }
-
-- (instancetype)initWithDelegate:(id <PJFDataSourceDelegate>)delegate;
-{
+- (instancetype)init {
     self = [super init];
     if (!self) {
         return nil;
     }
     
-    _delegate = delegate;
     _loadingCoordinator = [[PJFLoadingCoordinator alloc] initWithDataSource:self];
+    
+    return self;
+}
+
+- (instancetype)initWithDelegate:(id <PJFDataSourceDelegate>)delegate;
+{
+    self = [self init];
+    if (!self) {
+        return nil;
+    }
+    
+    _delegate = delegate;
     
     return self;
 }
