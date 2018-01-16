@@ -26,11 +26,12 @@
 
 - (instancetype)initWithDelegate:(id <PJFDataSourceDelegate>)delegate;
 {
-    self = [self init];
+    self = [super init];
     if (!self) {
         return nil;
     }
     
+    _loadingCoordinator = [[PJFLoadingCoordinator alloc] initWithDataSource:self];
     _delegate = delegate;
     
     return self;
