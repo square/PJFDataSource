@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'PJFDataSource'
-  s.version  = '1.0.5'
+  s.version  = '1.0.6'
   s.license  = 'Apache License, Version 2.0'
   s.summary  = 'A small library that provides a simple, clean architecture for your app to manage its data sources & common content view states.'
   s.homepage = 'https://github.com/square/PJFDataSource'
