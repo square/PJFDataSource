@@ -20,7 +20,7 @@ We keep the basic patterns that we like, but discard most of the more complex fe
 To install PJFDataSource in your iOS project, install with [CocoaPods](http://cocoapods.org):
 
 ```ruby
-platform :ios, '8.0'
+platform :ios, '11.0'
 pod 'PJFDataSource'
 ```
 
