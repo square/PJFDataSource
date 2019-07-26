@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		11F531941B8BB866000CDF79 /* PJFAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F531931B8BB866000CDF79 /* PJFAction.m */; };
+		CD36D3C322EB763700F2873A /* KeyboardLayoutHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD36D3C222EB763700F2873A /* KeyboardLayoutHelper.swift */; };
+		CD36D3C622EB9B5200F2873A /* Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD36D3C522EB9B5200F2873A /* Dummy.swift */; };
 		CDC7ED151B7D41CA00559387 /* PJFDataSource.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CDC7ED141B7D41CA00559387 /* PJFDataSource.h */; };
 		CDC7ED171B7D41CA00559387 /* PJFDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC7ED161B7D41CA00559387 /* PJFDataSource.m */; };
 		CDC7ED1D1B7D41CA00559387 /* libPJFDataSource.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDC7ED121B7D41CA00559387 /* libPJFDataSource.a */; };
@@ -60,6 +62,10 @@
 /* Begin PBXFileReference section */
 		11F531921B8BB866000CDF79 /* PJFAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJFAction.h; sourceTree = "<group>"; };
 		11F531931B8BB866000CDF79 /* PJFAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJFAction.m; sourceTree = "<group>"; };
+		CD36D3C122EB763700F2873A /* PJFDataSource-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PJFDataSource-Bridging-Header.h"; sourceTree = "<group>"; };
+		CD36D3C222EB763700F2873A /* KeyboardLayoutHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutHelper.swift; sourceTree = "<group>"; };
+		CD36D3C422EB9B5100F2873A /* PJFDataSourceDemoApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PJFDataSourceDemoApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		CD36D3C522EB9B5200F2873A /* Dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dummy.swift; sourceTree = "<group>"; };
 		CDC7ED121B7D41CA00559387 /* libPJFDataSource.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPJFDataSource.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDC7ED141B7D41CA00559387 /* PJFDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PJFDataSource.h; sourceTree = "<group>"; };
 		CDC7ED161B7D41CA00559387 /* PJFDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PJFDataSource.m; sourceTree = "<group>"; };
@@ -153,6 +159,8 @@
 				CDC7ED5A1B7D427200559387 /* PJFLoadingView.m */,
 				11F531921B8BB866000CDF79 /* PJFAction.h */,
 				11F531931B8BB866000CDF79 /* PJFAction.m */,
+				CD36D3C222EB763700F2873A /* KeyboardLayoutHelper.swift */,
+				CD36D3C122EB763700F2873A /* PJFDataSource-Bridging-Header.h */,
 			);
 			path = PJFDataSource;
 			sourceTree = "<group>";
@@ -190,6 +198,8 @@
 				CDC7ED3C1B7D421500559387 /* Images.xcassets */,
 				CDC7ED3E1B7D421500559387 /* LaunchScreen.xib */,
 				CDC7ED2F1B7D421500559387 /* Supporting Files */,
+				CD36D3C522EB9B5200F2873A /* Dummy.swift */,
+				CD36D3C422EB9B5100F2873A /* PJFDataSourceDemoApp-Bridging-Header.h */,
 			);
 			path = PJFDataSourceDemoApp;
 			sourceTree = "<group>";
@@ -265,23 +275,25 @@
 		CDB512DD1B7BC328003877E5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Square, Inc.";
 				TargetAttributes = {
 					CDC7ED111B7D41CA00559387 = {
 						CreatedOnToolsVersion = 6.4;
+						LastSwiftMigration = 1020;
 					};
 					CDC7ED1B1B7D41CA00559387 = {
 						CreatedOnToolsVersion = 6.4;
 					};
 					CDC7ED2C1B7D421400559387 = {
 						CreatedOnToolsVersion = 6.4;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
 			buildConfigurationList = CDB512E01B7BC328003877E5 /* Build configuration list for PBXProject "PJFDataSource" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -326,6 +338,7 @@
 			files = (
 				CDC7ED5D1B7D427200559387 /* PJFLoadingCoordinator.m in Sources */,
 				CDC7ED171B7D41CA00559387 /* PJFDataSource.m in Sources */,
+				CD36D3C322EB763700F2873A /* KeyboardLayoutHelper.swift in Sources */,
 				11F531941B8BB866000CDF79 /* PJFAction.m in Sources */,
 				CDC7ED5C1B7D427200559387 /* PJFImageTitleMessageView.m in Sources */,
 				CDC7ED5B1B7D427200559387 /* PJFContentWrapperView.m in Sources */,
@@ -345,6 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDC7ED381B7D421500559387 /* ViewController.m in Sources */,
+				CD36D3C622EB9B5200F2873A /* Dummy.swift in Sources */,
 				CDC7ED661B7D42A900559387 /* ColorsDataSource.m in Sources */,
 				CDC7ED351B7D421500559387 /* AppDelegate.m in Sources */,
 				CDC7ED321B7D421500559387 /* main.m in Sources */,
@@ -392,6 +406,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -400,12 +415,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -433,7 +450,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -445,6 +462,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -453,12 +471,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -479,9 +499,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -490,28 +511,38 @@
 		CDC7ED241B7D41CA00559387 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "PJFDataSource/PJFDataSource-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		CDC7ED251B7D41CA00559387 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "PJFDataSource/PJFDataSource-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
 		CDC7ED271B7D41CA00559387 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -530,6 +561,7 @@
 		CDC7ED281B7D41CA00559387 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -545,6 +577,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -553,6 +586,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.squareup.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PJFDataSourceDemoApp/PJFDataSourceDemoApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -560,10 +596,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = PJFDataSourceDemoApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.squareup.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PJFDataSourceDemoApp/PJFDataSourceDemoApp-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

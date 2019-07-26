@@ -7,15 +7,25 @@
 //
 
 #import "PJFImageTitleMessageView.h"
+
+#if __has_include("PJFDataSource-Swift.h")
+#import "PJFDataSource-Swift.h"
+#else
+#import <PJFDataSource/PJFDataSource-Swift.h>
+#endif
+
+
 #import "PJFAction.h"
 
 @interface PJFImageTitleMessageView ()
 
-@property (nonatomic) UIView *containerView;
+@property (nonatomic) UIView *nonKeyboardAreaView;
+@property (nonatomic) UIStackView *stackView;
 @property (nonatomic) UIImageView *imageView;
 @property (nonatomic) UILabel *titleLabel;
 @property (nonatomic) UILabel *messageLabel;
 @property (nonatomic) UIButton *actionButton;
+@property (nonatomic) PJFKeyboardLayoutHelper *keyboardLayoutHelper;
 
 @end
 
@@ -29,32 +39,55 @@
         return nil;
     }
     
-    _containerView = [[UIView alloc] initWithFrame:CGRectZero];
-    _containerView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self addSubview:_containerView];
+    _nonKeyboardAreaView = [[UIView alloc] initWithFrame:CGRectZero];
+    _nonKeyboardAreaView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:_nonKeyboardAreaView];
+    
+    _stackView = [[UIStackView alloc] initWithFrame:CGRectZero];
+    _stackView.translatesAutoresizingMaskIntoConstraints = NO;
+    _stackView.axis = UILayoutConstraintAxisVertical;
+    _stackView.spacing = 8.0;
+    _stackView.alignment = UIStackViewAlignmentCenter;
+    [_nonKeyboardAreaView addSubview:_stackView];
 
     _imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     _imageView.translatesAutoresizingMaskIntoConstraints = NO;
-    [_containerView addSubview:_imageView];
+    _imageView.hidden = YES;
+    [_stackView addArrangedSubview:_imageView];
+    [_stackView setCustomSpacing:16 afterView:_imageView];
     
     _titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     _titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     _titleLabel.numberOfLines = 0;
     _titleLabel.textAlignment = NSTextAlignmentCenter;
-    [_containerView addSubview:_titleLabel];
+    [_stackView addArrangedSubview:_titleLabel];
 
     _messageLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     _messageLabel.translatesAutoresizingMaskIntoConstraints = NO;
     _messageLabel.numberOfLines = 0;
     _messageLabel.textAlignment = NSTextAlignmentCenter;
-    [_containerView addSubview:_messageLabel];
-    
+    [_stackView addArrangedSubview:_messageLabel];
+
     _actionButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _actionButton.translatesAutoresizingMaskIntoConstraints = NO;
     _actionButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
-    [_containerView addSubview:_actionButton];
+    _actionButton.hidden = YES;
+    [_stackView addArrangedSubview:_actionButton];
     
-    [self _setUpConstraints];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:_nonKeyboardAreaView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1 constant:0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:_nonKeyboardAreaView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1 constant:0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:_nonKeyboardAreaView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeRight multiplier:1 constant:0]];
+    NSLayoutConstraint *bottomToKeyboardConstraint = [NSLayoutConstraint constraintWithItem:_nonKeyboardAreaView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
+    [self addConstraint:bottomToKeyboardConstraint];
+
+    _keyboardLayoutHelper = [[PJFKeyboardLayoutHelper alloc] initWithView:self bottomConstraint:bottomToKeyboardConstraint];
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:_stackView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:_nonKeyboardAreaView attribute:NSLayoutAttributeTop multiplier:1 constant:20]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:_stackView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:_nonKeyboardAreaView attribute:NSLayoutAttributeLeft multiplier:1 constant:20]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:_stackView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationLessThanOrEqual toItem:_nonKeyboardAreaView attribute:NSLayoutAttributeRight multiplier:1 constant:-20]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:_stackView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationLessThanOrEqual toItem:_nonKeyboardAreaView attribute:NSLayoutAttributeBottom multiplier:1 constant:-20]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:_stackView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:_nonKeyboardAreaView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:_stackView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_nonKeyboardAreaView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
 
     return self;
 }
@@ -82,6 +115,7 @@
 - (void)setImage:(UIImage *)image;
 {
     self.imageView.image = image;
+    self.imageView.hidden = image == nil;
 }
 
 - (NSString *)title;
@@ -151,6 +185,7 @@
     [self.actionButton removeTarget:self action:NULL forControlEvents:UIControlEventAllEvents];
     [self.actionButton addTarget:self action:@selector(_actionButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.actionButton setTitle:action.title forState:UIControlStateNormal];
+    [self.actionButton setHidden:action == nil || action.title.length == 0];
 }
 
 - (void)setActionFont:(UIFont *)font;
@@ -180,23 +215,6 @@
     }
 
     [[UIApplication sharedApplication] sendAction:action to:target from:sender forEvent:nil];
-}
-
-- (void)_setUpConstraints;
-{
-    NSDictionary *views = NSDictionaryOfVariableBindings(_imageView, _titleLabel, _messageLabel, _actionButton);
-    
-    // Image, title, and message views are contained within the container view.
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_imageView]-16-[_titleLabel]-8-[_messageLabel]-8-[_actionButton]-20-|" options:0 metrics:nil views:views]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|->=0-[_imageView]->=0-|" options:0 metrics:nil views:views]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_titleLabel]|" options:0 metrics:nil views:views]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_messageLabel]|" options:0 metrics:nil views:views]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.actionButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|->=0-[_actionButton]->=0-|" options:0 metrics:nil views:views]];
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.containerView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.containerView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
 }
 
 @end
