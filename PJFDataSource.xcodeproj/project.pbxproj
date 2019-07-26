@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		11F531941B8BB866000CDF79 /* PJFAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F531931B8BB866000CDF79 /* PJFAction.m */; };
 		CD36D3C322EB763700F2873A /* KeyboardLayoutHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD36D3C222EB763700F2873A /* KeyboardLayoutHelper.swift */; };
+		CD36D3C622EB9B5200F2873A /* Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD36D3C522EB9B5200F2873A /* Dummy.swift */; };
 		CDC7ED151B7D41CA00559387 /* PJFDataSource.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CDC7ED141B7D41CA00559387 /* PJFDataSource.h */; };
 		CDC7ED171B7D41CA00559387 /* PJFDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC7ED161B7D41CA00559387 /* PJFDataSource.m */; };
 		CDC7ED1D1B7D41CA00559387 /* libPJFDataSource.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDC7ED121B7D41CA00559387 /* libPJFDataSource.a */; };
@@ -63,6 +64,8 @@
 		11F531931B8BB866000CDF79 /* PJFAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJFAction.m; sourceTree = "<group>"; };
 		CD36D3C122EB763700F2873A /* PJFDataSource-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PJFDataSource-Bridging-Header.h"; sourceTree = "<group>"; };
 		CD36D3C222EB763700F2873A /* KeyboardLayoutHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutHelper.swift; sourceTree = "<group>"; };
+		CD36D3C422EB9B5100F2873A /* PJFDataSourceDemoApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PJFDataSourceDemoApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		CD36D3C522EB9B5200F2873A /* Dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dummy.swift; sourceTree = "<group>"; };
 		CDC7ED121B7D41CA00559387 /* libPJFDataSource.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPJFDataSource.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDC7ED141B7D41CA00559387 /* PJFDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PJFDataSource.h; sourceTree = "<group>"; };
 		CDC7ED161B7D41CA00559387 /* PJFDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PJFDataSource.m; sourceTree = "<group>"; };
@@ -195,6 +198,8 @@
 				CDC7ED3C1B7D421500559387 /* Images.xcassets */,
 				CDC7ED3E1B7D421500559387 /* LaunchScreen.xib */,
 				CDC7ED2F1B7D421500559387 /* Supporting Files */,
+				CD36D3C522EB9B5200F2873A /* Dummy.swift */,
+				CD36D3C422EB9B5100F2873A /* PJFDataSourceDemoApp-Bridging-Header.h */,
 			);
 			path = PJFDataSourceDemoApp;
 			sourceTree = "<group>";
@@ -282,6 +287,7 @@
 					};
 					CDC7ED2C1B7D421400559387 = {
 						CreatedOnToolsVersion = 6.4;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -352,6 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDC7ED381B7D421500559387 /* ViewController.m in Sources */,
+				CD36D3C622EB9B5200F2873A /* Dummy.swift in Sources */,
 				CDC7ED661B7D42A900559387 /* ColorsDataSource.m in Sources */,
 				CDC7ED351B7D421500559387 /* AppDelegate.m in Sources */,
 				CDC7ED321B7D421500559387 /* main.m in Sources */,
@@ -570,6 +577,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -578,6 +586,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.squareup.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PJFDataSourceDemoApp/PJFDataSourceDemoApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -585,10 +596,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = PJFDataSourceDemoApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.squareup.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PJFDataSourceDemoApp/PJFDataSourceDemoApp-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
